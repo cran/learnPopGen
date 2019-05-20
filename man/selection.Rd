@@ -2,7 +2,7 @@
 \alias{selection}
 \title{Numerical analysis of biallelic locus frequency independent selection}
 \usage{
-	selection(p0=0.01, w=c(1.0,0.9,0.8), time=100, show="p", pause=0,...)
+	selection(p0=0.01, w=c(1.0,0.9,0.8), time=100, show="p", pause=0, ...)
 }
 \arguments{
 	\item{p0}{Starting frequency for the \emph{A} allele.}
@@ -17,6 +17,10 @@
 }
 \value{
 	The function creates one of several possible plots, depending on the value of \code{show}.
+	
+	The cobweb plot shows \emph{p}(\emph{t+1}) as a function of \emph{p}(\emph{t}), with stairsteps giving the changes across generations given the initial value of \emph{p} (\code{p0}) and total time (\code{time}) that are specified by the user.
+	
+	The function invisibly returns an object of class \code{"selection"} which can be printed or re-plotted using associated \code{print} and \code{plot} methods. (See examples.)
 }
 \author{Liam Revell \email{liam.revell@umb.edu}}
 \seealso{
@@ -25,6 +29,9 @@
 \examples{
 	selection(w=c(1.0,0.8,0.8),time=500)
 	selection(w=c(1.0,1.0,0.0),show="surface")
+	object<-selection(w=c(0.8,1.1,0.7))
+	print(object)
+	plot(object,show="cobweb")
 }
 \keyword{evolutionary theory}
 \keyword{population genetics}

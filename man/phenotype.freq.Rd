@@ -12,7 +12,7 @@
 	\item{effect}{additive effect of an allele substitution. For simplicity, this is assumed to be the same at all loci.}
 	\item{beta}{selection gradient.}
 	\item{ngen}{number of generations to analyze.}
-	\item{...}{optional arguments.}
+	\item{...}{optional arguments. Presently the only optional argument in the function \code{phenotype.selection} is \code{sleep}, which can be used to specify the time delay in seconds between generations.}
 }
 \description{
 	\code{phenotype.freq} computes the phenotypic trait distribution for a polygenic trait. Can be used to demonstrate that the phenotypic distribution of a polygenic trait will tend to normality as the number of loci is increased, regardless of the allele frequencies at each locus.
@@ -21,6 +21,8 @@
 }
 \value{
 	Creates a plot or animation.
+	
+	\code{phenotype.freq} also invisibly returns an object of class \code{"phenotype.freq"} that can be printed or re-plotted using \code{print} and \code{plot} methods corresponding to the object type. (See examples.)
 }
 \author{Liam Revell \email{liam.revell@umb.edu}}
 \seealso{
@@ -29,7 +31,12 @@
 \examples{
 	\dontrun{
 		phenotype.freq(n=4)
-		phenotype.freq(nloci=6,p=runif(n=6),effect=1/6)
+		object<-phenotype.freq(nloci=6,p=runif(n=6),effect=1/6)
+		print(object)
+		plot(object)
+		object<-phenotype.freq(nloci=10,p=runif(n=10),effect=rexp(n=10))
+		print(object)
+		plot(object)
 		phenotype.selection(ngen=100)
 	}
 }

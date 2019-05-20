@@ -1,6 +1,6 @@
 Package: learnPopGen
-Version: 0.9.8
-Date: 2018-10-1
+Version: 1.0.4
+Date: 2019-05-20
 Title: Population Genetic Simulations & Numerical Analysis
 Author: Liam J. Revell
 Maintainer: Liam J. Revell <liam.revell@umb.edu>
@@ -10,8 +10,8 @@ Suggests:
 ZipData: no
 Description: Conducts various numerical analyses and simulations in population genetics and evolutionary theory, primarily for the purpose of teaching (and learning about) key concepts in population & quantitative genetics, and evolutionary theory.
 License: GPL (>= 2)
-URL: http://github.com/liamrevell/PopGen
-Packaged: 2018-10-01 19:51:28 UTC; liamj
+URL: http://github.com/liamrevell/learnPopGen
+Packaged: 2019-05-20 20:17:27 UTC; liamj
 Repository: CRAN
-Date/Publication: 2018-10-12 13:20:03 UTC
+Date/Publication: 2019-05-20 20:40:03 UTC
 NeedsCompilation: no

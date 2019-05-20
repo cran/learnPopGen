@@ -1,7 +1,14 @@
 ## function performs individual based simulations of reproductive character displacement
 ## written by Liam J. Revell 2012, 2018
 
-rcd<-function(nsp=3,nindivs=c(700,400,100),w_t=10,gen=c(500,500),figs="on",pf=100){
+rcd<-function(nsp=3,nindivs=c(700,400,100),w_t=10,gen=c(500,500),figs="on",pf=100,...){
+	## optional arguments:
+	if(hasArg(xlab)) xlab<-list(...)$xlab
+	else xlab<-"generation"
+	if(hasArg(ylab)) ylab<-list(...)$ylab
+	else ylab<-"signal trait"
+	if(hasArg(alpha)) alpha<-list(...)$alpha
+	else alpha<-0.5
 	# set simulation control conditions
 	burnin<-gen[1]
 	ngen<-gen[2]
@@ -179,8 +186,8 @@ rcd<-function(nsp=3,nindivs=c(700,400,100),w_t=10,gen=c(500,500),figs="on",pf=10
 		if(nsp==1){
 			yMax<-max(1.1*c(meantrait,meanpref,ninety))
 			yMin<-min(1.1*c(meantrait,meanpref,-ninety))
-			plot(tt,meantrait[,1],"l",ylim=c(yMin,yMax),col="blue",xlab="generation",ylab="signal trait",lwd=2)
-			lines(tt,meanpref[,1],col="red",lwd=2)
+			plot(tt,meantrait[,1],"l",ylim=c(yMin,yMax),col=make.transparent("blue",alpha),xlab=xlab,ylab=ylab,lwd=2)
+			lines(tt,meanpref[,1],col=make.transparent("red",alpha),lwd=2)
 			lines(c(tt[1],tt[length(tt)]),c(0,0))
 			lines(c(tt[1],tt[length(tt)]),c(ninety,ninety),lty=2)
 			lines(c(tt[1],tt[length(tt)]),-c(ninety,ninety),lty=2)
@@ -189,10 +196,10 @@ rcd<-function(nsp=3,nindivs=c(700,400,100),w_t=10,gen=c(500,500),figs="on",pf=10
 				yMax<-max(1.1*c(meantrait,meanpref,ninety))
 				yMin<-min(1.1*c(meantrait,meanpref,-ninety))
 				if(figs=="on") par(mfrow=c(2,1),mar=c(5.1,4.1,1.1,2.1))
-				plot(tt,meantrait[,1],"l",ylim=c(yMin,yMax),col="blue",xlab="generation",ylab="signal trait",lwd=2)
-				lines(tt,meanpref[,1],col="red",lwd=2)
-				lines(tt,meantrait[,2],col="green",lwd=2)
-				lines(tt,meanpref[,2],col="yellow",lwd=2)			
+				plot(tt,meantrait[,1],"l",ylim=c(yMin,yMax),col=make.transparent("blue",alpha),xlab=xlab,ylab=ylab,lwd=2)
+				lines(tt,meanpref[,1],col=make.transparent("red",alpha),lwd=2)
+				lines(tt,meantrait[,2],col=make.transparent("green",alpha),lwd=2)
+				lines(tt,meanpref[,2],col=make.transparent("yellow",alpha),lwd=2)			
 				lines(c(tt[1],tt[length(tt)]),c(0,0))
 				lines(c(tt[1],tt[length(tt)]),c(ninety,ninety),lty=2)
 				lines(c(tt[1],tt[length(tt)]),-c(ninety,ninety),lty=2)
@@ -204,12 +211,12 @@ rcd<-function(nsp=3,nindivs=c(700,400,100),w_t=10,gen=c(500,500),figs="on",pf=10
 				yMax<-max(1.1*c(meantrait,meanpref,ninety))
 				yMin<-min(1.1*c(meantrait,meanpref,-ninety))
 				if(figs=="on") par(mfrow=c(2,1),mar=c(5.1,4.1,1.1,2.1))
-				plot(tt,meantrait[,1],"l",ylim=c(yMin,yMax),col="blue",xlab="generation",ylab="signal trait",lwd=2)
-				lines(tt,meanpref[,1],col="red",lwd=2)
-				lines(tt,meantrait[,2],col="green",lwd=2)
-				lines(tt,meanpref[,2],col="yellow",lwd=2)
-				lines(tt,meantrait[,3],col="black",lwd=2)
-				lines(tt,meanpref[,3],col="purple",lwd=2)		
+				plot(tt,meantrait[,1],"l",ylim=c(yMin,yMax),col=make.transparent("blue",alpha),xlab="generation",ylab="signal trait",lwd=2)
+				lines(tt,meanpref[,1],col=make.transparent("red",alpha),lwd=2)
+				lines(tt,meantrait[,2],col=make.transparent("green",alpha),lwd=2)
+				lines(tt,meanpref[,2],col=make.transparent("yellow",alpha),lwd=2)
+				lines(tt,meantrait[,3],col=make.transparent("black",alpha),lwd=2)
+				lines(tt,meanpref[,3],col=make.transparent("purple",alpha),lwd=2)		
 				lines(c(tt[1],tt[length(tt)]),c(0,0))
 				lines(c(tt[1],tt[length(tt)]),c(ninety,ninety),lty=2)
 				lines(c(tt[1],tt[length(tt)]),-c(ninety,ninety),lty=2)
